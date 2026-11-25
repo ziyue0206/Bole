@@ -1,0 +1,18 @@
+schema_version: 1
+benchmark:
+  name: robodojo
+  tasks: [make_toast]
+  seeds: [0, 1, 2]
+# 采用已确认原生计划前缀：该 task 的 seed 0 前五个布局，非每seed五个。
+episodes: 5
+episodes_selection: native_prefix
+harness:
+  name: codex
+  memory: {enabled: true}
+  shell: {network_access: true}
+learn: {parallel: 1}
+limits:
+  timeout_start: first_observation
+  timeout_s: 1200
+termination: {success_grace_steps: 20}
+output: ../runs

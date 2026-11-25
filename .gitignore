@@ -1,0 +1,37 @@
+# Local runtime resources and configuration
+.venv/
+runtime-deps/
+assets/
+Assets/
+runs/
+validation/
+backups/
+checkpoints/
+resources.yaml
+*.local.yaml
+*.local.yml
+*.local.json
+*.local.*
+*.previous
+*.previous-*
+.env
+.env.*
+*.key
+*.pem
+*.log
+*.sqlite
+*.sqlite3
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+# Python and platform metadata
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.DS_Store
+._*

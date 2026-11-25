@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "source": "https://github.com/RoboDojo-Benchmark/RoboDojo",
+  "vendored_source": "vendor/robodojo",
+  "declared_revision": "f57e1633ffed59761bc8e568cfe7530c4b33381c",
+  "observed_git_revision": null,
+  "git_changes": null,
+  "verification": "vendored_subset_with_declared_upstream_revision",
+  "included_paths": [
+    "env",
+    "env_cfg",
+    "src",
+    "task",
+    "utils",
+    "scripts",
+    "XPolicyLab/client_server",
+    "XPolicyLab/policy/demo_policy/deploy.yml",
+    "XPolicyLab/LICENSE",
+    "pyproject.toml",
+    "LICENSE",
+    ".openplatform-assets-revision"
+  ],
+  "upstream_submodules": {
+    "XPolicyLab": {
+      "repository": "https://github.com/XPolicyLab/XPolicyLab",
+      "revision": "5d0be1499634d3176258c8f2e31f5fe816497b0a"
+    }
+  }
+}

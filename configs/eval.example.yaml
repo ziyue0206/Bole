@@ -1,0 +1,16 @@
+schema_version: 1
+benchmark:
+  name: robodojo
+  tasks: [make_toast]
+  seeds: [0, 1, 2]
+episodes: 1
+harness:
+  name: codex
+  memory: {enabled: true}
+  shell: {network_access: true}
+eval: {session: isolated, parallel: 1}
+limits:
+  timeout_start: first_observation
+  timeout_s: 1200
+termination: {success_grace_steps: 20}
+output: ../runs

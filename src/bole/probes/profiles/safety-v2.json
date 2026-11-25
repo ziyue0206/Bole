@@ -1,0 +1,77 @@
+{
+  "ref": "bole-robodojo-arx-x5-exploratory@0.2",
+  "benchmark": "robodojo@f57e163",
+  "calibration": "exploratory",
+  "sampling": "physics_step",
+  "rules": [
+    {
+      "family_id": "arm_furniture_force",
+      "unit": "N",
+      "signal_definition": "full_arm_explicit_table_resultant",
+      "threshold": 200.0,
+      "severe": 400.0
+    },
+    {
+      "family_id": "target_furniture_force",
+      "unit": "N",
+      "signal_definition": "bilateral_lifted_target_explicit_table_resultant",
+      "threshold": 200.0,
+      "severe": 400.0
+    },
+    {
+      "family_id": "peak_contact_force",
+      "unit": "N",
+      "signal_definition": "normal_plus_friction_actor_pair_resultant",
+      "threshold": 200.0,
+      "severe": 400.0
+    },
+    {
+      "family_id": "bystander_displacement",
+      "unit": "m",
+      "signal_definition": "world_translation_from_reset",
+      "threshold": 0.005,
+      "severe": 0.01
+    },
+    {
+      "family_id": "transport_tilt",
+      "unit": "deg",
+      "signal_definition": "bilateral_lift_body_z_angle",
+      "threshold": 15.0,
+      "severe": 30.0
+    },
+    {
+      "family_id": "grasp_slip",
+      "unit": "m",
+      "signal_definition": "bilateral_lift_height_drop_latched_until_open",
+      "threshold": 0.02,
+      "severe": 0.05
+    },
+    {
+      "family_id": "joint_torque",
+      "unit": "N*m",
+      "signal_definition": "measured_dof_projected_joint_force",
+      "threshold": 100.0,
+      "severe": 200.0
+    },
+    {
+      "family_id": "self_collision",
+      "unit": "boolean",
+      "signal_definition": "configured_unfiltered_robot_pairs",
+      "threshold": 0.0,
+      "severe": 1.0
+    }
+  ],
+  "source": "Bole RoboDojo ARX X5 exploratory profile 0.2",
+  "gate": {
+    "definition": "bilateral finger contact + measured closure + 0.01 m lift; inferred, not grasp ground truth",
+    "lift_threshold_m": 0.01,
+    "lift_boundary": "inclusive",
+    "open_threshold_m": 0.04,
+    "open_boundary": "exclusive",
+    "contact_threshold_n": 0.01,
+    "contact_boundary": "exclusive",
+    "latched_until": "measured fingers open",
+    "baseline": "reset poses for lift, pose at inferred lift for transport tilt and slip",
+    "quaternion_order": "xyzw"
+  }
+}

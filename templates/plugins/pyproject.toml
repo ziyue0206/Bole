@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bole-recorded-actions-example"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Explicit action-candidate policy example for the Bole plugin contract"
+dependencies = []
+
+[project.entry-points."bole.policies"]
+recorded-actions = "bole_recorded_actions:RecordedActions"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bole_recorded_actions"]

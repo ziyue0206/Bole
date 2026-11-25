@@ -1,0 +1,29 @@
+# Paths are relative to this configuration file, not the shell working directory.
+resources:
+  source: ../runtime-deps/portable/robodojo-source
+  source_revision: f57e1633ffed59761bc8e568cfe7530c4b33381c
+  assets: ../assets/robodojo
+  asset_revision: 1127bda94f172d757386945af3eb3a6754d1a4e6
+  asset_overrides: ../runtime-deps/portable/generated-assets
+  simulator_image: bole/robodojo:f57e1633ffed
+  simulator_image_id: null  # Optional complete local image ID, recorded by bootstrap after building.
+  simulator_root: /workspace/RoboDojo
+  simulator_python: python  # Retain the upstream Conda-activating entrypoint.
+  simulator_entrypoint: null
+  simulator_env: {}
+  harness_image: bole/codex:0.169.0
+  codex_python: /usr/bin/python3
+  codex_cli: null  # Baked into the thin layer; optional host binary mount supported.
+  codex_bwrap: null  # Baked beside Codex under codex-resources/.
+  codex_seccomp: ../containers/codex/seccomp-bole-codex.json
+  codex_apparmor: bole-codex-bwrap
+  gpus: []
+  cache_source: ../runtime-deps/portable/cache/cache
+  extensions_source: ../runtime-deps/portable/cache/extensions
+  cache_volumes: {cache: null, extensions: null}
+harness:
+  executable: /opt/bole-tools/codex
+  gateway:
+    base_url: https://api.openai.com/v1
+    credential_env: OPENAI_API_KEY
+    proxy: null

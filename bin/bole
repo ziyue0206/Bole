@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+case "$0" in
+    */*) BOLE_BIN_DIR=${0%/*} ;;
+    *) BOLE_BIN_DIR=. ;;
+esac
+BOLE_ROOT=$(CDPATH= cd -- "$BOLE_BIN_DIR/.." && pwd)
+BOLE_PYTHON=${BOLE_PYTHON:-$BOLE_ROOT/.venv/bin/python}
+if [ ! -x "$BOLE_PYTHON" ]; then
+    echo "bole: missing Python environment: $BOLE_PYTHON; prepare it with scripts/bootstrap.py --steps python --apply" >&2
+    exit 2
+fi
+unset PYTHONHOME VIRTUAL_ENV
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONNOUSERSITE=1
+export PYTHONPATH="$BOLE_ROOT/src"
+export PATH="$BOLE_ROOT/.venv/bin:$PATH"
+exec "$BOLE_PYTHON" -P -m bole "$@"
